@@ -12,6 +12,7 @@ function App() {
     emailAdd: "",
     quiryType: "",
     message: "",
+    concentCheck: false,
   })
 
   const onChangeHandler = (e) =>{
@@ -28,7 +29,9 @@ function App() {
     e.preventDefault()
     console.log(formData);
     
-
+    if (!formData.concentCheck) {
+      alert("please check the consent box to proceed")
+    }
   }
 
   return (
@@ -79,7 +82,14 @@ function App() {
               <div>
                 <h2 className='text-[18px] py-[18px] '>Query type *</h2>
                 <div className='flex gap-2'>
-                  <div className='border rounded-lg px-5 py-2 flex items-center capitalize '>
+                  <div onClick={
+                    ()=>{
+                      setFormData({
+                        ...formData,
+                        quiryType:"generalEnquiry"
+                      })
+                    }
+                  } className='border rounded-lg px-5 py-2 flex items-center capitalize '>
                     <input type="radio" 
                       name='quiryType'
                       value='generalEnquiry'
@@ -89,7 +99,12 @@ function App() {
                     />
                     <label className='pl-3' htmlFor="generalEnquiry">general enquiry</label>
                   </div>
-                  <div className='border rounded-lg px-5 py-2 flex items-center capitalize'>
+                  <div onClick={()=>{
+                      setFormData({
+                        ...formData,
+                        quiryType:"supportRequest"
+                      })
+                    }} className='border rounded-lg px-5 py-2 flex items-center capitalize'>
                     <input 
                       type="radio"
                       name='quiryType'
@@ -98,7 +113,9 @@ function App() {
                       onChange={onChangeHandler}
                       className=''
                     />
+                  
                     <label className='pl-3' htmlFor="supportEnquiry">support request</label>
+                  
                   </div>
                 </div>
                 
@@ -118,7 +135,23 @@ function App() {
               {/* btn */}
               <div>
                 <div className=' py-4 flex items-center'>
-                  <input type="checkbox" id='checkbox' name='checkbox' />
+                  {/* <input 
+                    type="checkbox" 
+                    name='concentCheck'
+                    checked={formData.concentCheck}
+                    onChange={(e)=>{
+                      setFormData({
+                        ...formData,
+                        concentCheck: e.value.checked
+                      })
+                    }}
+                    /> */}
+                    <input
+                      type="checkbox"
+                      name='concentCheck'
+                      checked={formData.concentCheck}
+                      onChange={(e) => setFormData({ ...formData, concentCheck: e.target.                   checked })}
+                    />
                   <label className=' pl-2' htmlFor="checkbox">I consent to being contacted by the team *</label>
                 </div>
                 <button className='w-full bg-darkGreen text-white rounded-md py-3  '>
