@@ -82,7 +82,9 @@ function App() {
                   <div className='border rounded-lg px-5 py-2 flex items-center capitalize '>
                     <input type="radio" 
                       name='quiryType'
-                      id='quiryType'
+                      value='generalEnquiry'
+                      checked={formData.quiryType === "generalEnquiry"}
+                      onChange={onChangeHandler}
                       className=''
                     />
                     <label className='pl-3' htmlFor="generalEnquiry">general enquiry</label>
@@ -91,7 +93,9 @@ function App() {
                     <input 
                       type="radio"
                       name='quiryType'
-                      id='quiryType'
+                      value='supportRequest'
+                      checked={formData.quiryType === "supportRequest"}
+                      onChange={onChangeHandler}
                       className=''
                     />
                     <label className='pl-3' htmlFor="supportEnquiry">support request</label>
