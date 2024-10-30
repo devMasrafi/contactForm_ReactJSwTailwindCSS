@@ -8,7 +8,16 @@ export default {
     fontFamily: {
       "karla": ['"Karla", sans-serif'],
     },
-    extend: {},
+    extend: {
+      
+      colors: {
+        'lightGreen': 'hsl(148, 38%, 91%)',
+        'darkGreen': 'hsl(169, 82%, 27%)',
+        'red': 'hsl(0, 66%, 54%)',
+        'greyMed': 'hsl(186, 15%, 59%)',
+        'greyDark': 'hsl(187, 24%, 22%)',
+      },
+    },
   },
   plugins: [],
 }
