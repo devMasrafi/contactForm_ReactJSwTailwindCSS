@@ -15,7 +15,7 @@ function App() {
   })
 
   const onChangeHandler = (e) =>{
-    console.log(e);
+    // console.log(e);
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
