@@ -4,6 +4,32 @@ import { useState } from 'react'
 
 function App() {
 
+  // const [firstName, lastName, emailAdd, quiryType, message] = useState({})
+  // initial state
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName:"",
+    emailAdd: "",
+    quiryType: "",
+    message: "",
+  })
+
+  const onChangeHandler = (e) =>{
+    console.log(e);
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+
+    })
+    
+  }
+
+  const onSubmitHandler= (e)=>{
+    e.preventDefault()
+    console.log(formData);
+    
+
+  }
 
   return (
     <>
@@ -11,15 +37,17 @@ function App() {
         <div className='container mx-auto py-[140px] h-[770px] w-[736px] '>
           <div className='bg-white rounded-lg p-12 '>
             <h2 className='text-[28px] font-bold py-[18px] '>Contact us</h2>
-            <form>
+            <form onSubmit={onSubmitHandler}>
               {/* name input */}
               <div className=' flex justify-between my-3 '>
                 <div className='flex flex-col gap-2'>
                   <label htmlFor="firstName">First Name *</label>
                   <input 
                     type="text"
-                    id='firstName'
                     name='firstName'
+                    value={formData.firstName}
+                    onChange={onChangeHandler}
+
                     className='border rounded-md p-1 w-[310px] h-[36px] outline-none '
                   />
                 </div>
@@ -28,7 +56,9 @@ function App() {
                   <input 
                     type="text"
                     name='lastName'
-                    id='lastName'
+                    value={formData.lastName}
+                    onChange={onChangeHandler}
+
                     className='border rounded-md p-1 w-[310px] h-[36px] outline-none'
                   />
                 </div>
@@ -38,8 +68,10 @@ function App() {
                 <label htmlFor="emailAdd">email address *</label>
                 <input 
                   type="email"
-                  id='emailAdd'
                   name='emailAdd'
+                  value={formData.emailAdd}
+                  onChange={onChangeHandler}
+
                   className='border rounded-md h-[36px] px-2 outline-none '
                 />
               </div>
@@ -62,7 +94,7 @@ function App() {
                       id='quiryType'
                       className=''
                     />
-                    <label htmlFor="supportEnquiry">support request</label>
+                    <label className='pl-3' htmlFor="supportEnquiry">support request</label>
                   </div>
                 </div>
                 
@@ -72,7 +104,9 @@ function App() {
                 <h2 className='my-2 capitalize'>message *</h2>
                 <textarea 
                   name="message"
-                  id="message"
+                  value={formData.message}
+                  onChange={onChangeHandler}
+
                   rows={5}
                   className='w-full border rounded-md p-1 outline-none'
                 ></textarea>
